@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctor View</title>
+  </head>
+  <style>
+    /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  </style>
+  <body class="blue lighten-5">
+    
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 blue lighten-1">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">
+          <img src="img/hygeia_logo_2.png" style="width: 55px; margin-top: 5px;">
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="black-text modal-trigger" data-target="modal-account"><img style="padding-top:10px; height:50px;" src="img/account.png"/></a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="black-text modal-trigger" data-target="modal-create"><img style="padding-top:10px; height:50px;" src="img/new.png"/></a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="black-text" id="logout"><img style="padding-top:10px; height:50px;" src="img/logout.png"/></a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="black-text modal-trigger" data-target="modal-login">Login</a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="black-text modal-trigger" data-target="modal-signup">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+      <div class="modal-content">
+        <h4>Sign up</h4></br />
+        <form id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required />
+            <label for=""signup-email>Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required/>
+            <label for="signup-password">Choose password</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+      <div class="modal-content">
+        <h4>Login</h4><br />
+        <form id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" required />
+            <label for="login-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" required />
+            <label for="login-password">Your password</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL ACCOUNT -->
+    <div id="modal-account" class="modal">
+      <div class="modal-content center-align">
+        <h4>Account details</h4><br />
+        <div class = "account-details" id="account-details"></div>
+      </div>
+    </div>
+
+    <!-- CREATE GUIDE MODAL -->
+    <div id="modal-create" class="modal">
+      <div class="modal-content">
+        <h4>New Patient</h4><br />
+        <form id="create-form">
+          <div class="input-field">
+            <input type="text" id="name" required />
+            <label for="name">Patient's Name</label>
+          </div>
+          <div class="input-field">
+            <textarea id="status" class="materialize-textarea" required ></textarea>
+            <label for="status">Patient's Status</label>
+          </div>
+          <div class="input-field">
+            <input id="age" type="number" required ></number>
+            <label for="age">Patient's Age</label>
+          </div>
+          <div class="input-field">
+            <input id="number_of_pills" type="number" required ></number>
+            <label for="number_of_pills">Number of Pills</label>
+          </div>
+          <div id="pills_information">
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- PATIENT MODAL -->
+    
+    <!-- Modal Structure -->
+    <div id="patient" class="modal">
+      <div class="modal-content" id="patient-content">
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'info')">Info</button>
+          <button class="tablinks" onclick="openTab(event, 'pills')">Pills</button>
+          <button class="tablinks" onclick="openTab(event, 'appointments')">Appointments</button>
+        </div>
+        <div id="info" class="tabcontent"></div>
+        <div id="pills" class="tabcontent"></div>
+        <div id="appointments" class="tabcontent"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+
+    <!-- GUIDE LIST -->
+    <div class="container" style="margin-top: 40px;">
+      <ul class="collapsible z-depth-0 guides" style="border: none;">
+      </ul>
+    </div>
+
+    <script>
+      function openTab(evt, tab) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tab).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+
+    <script>
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var config = {
+        apiKey: "AIzaSyCa4li9KlFULsLBT-hm_cYW6SIQGZw0jqo",
+        authDomain: "solutionstest-bb776.firebaseapp.com",
+        databaseURL: "https://solutionstest-bb776.firebaseio.com",
+        projectId: "solutionstest-bb776",
+        appId: "1:176066108828:web:7b02e11b0b4ad3962dbc59",
+      };
+      firebase.initializeApp(config);
+
+
+      // auth and firebase references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      //update firestore settings
+      db.settings({ timestampsInSnapshots: true});
+
+      const num = document.querySelector('#number_of_pills');
+      const pills = document.querySelector('#pills_information');
+      var i = 1;
+      num.addEventListener('input', function (evt) {   
+        while (i <= num.value) {
+          pills.innerHTML += `<div class="input-field" id="pill">
+              <textarea id="pill_name_${i}" class="materialize-textarea" required ></textarea>
+              <label for="pill_name_${i}">Pill ${i} name: </label>
+              </div>
+              <div class="input-field" id="pill">
+              <textarea id="pill_description_${i}" class="materialize-textarea" required ></textarea>
+              <label for="pill_description_${i}">Pill ${i} description: </label>
+              </div>
+              <div class="input-field" id="pill">
+              <textarea id="amount_${i}" class="materialize-textarea" required ></textarea>
+              <label for="amount_${i}">Pill ${i} amount: </label>
+              </div>
+              <div class="input-field" id="pill">
+              <textarea id="start_${i}" class="materialize-textarea" required ></textarea>
+              <label for="start_${i}">Pill ${i} start time and day (format: yy-mm-dd hh:mm:ss): </label>
+              </div>
+              <div class="input-field" id="pill">
+              <textarea id="frequency_${i}" class="materialize-textarea" required ></textarea>
+              <label for="frequency_${i}">Frequency (Fromat: DAYLY, MONTHLY, WEEKLY) (in caps): </label>
+              </div>
+              <div class="input-field" id="pill">
+              <textarea id="days_${i}" class="materialize-textarea" required ></textarea>
+              <label for="days_${i}">Which days? (Format: MO,TU,WE,TH,FR,SA,SU) (in caps and separated by commas): </label>
+              </div>
+              <div class="input-field" id="pill">
+              <label for="interval_${i}">Every how many weeks? </label>
+              <textarea id="interval_${i}" class="materialize-textarea" required ></textarea>
+              </div>
+              <div class="input-field" id="pill">
+              <label for="count_${i}">For how many weeks? </label>
+              <textarea id="count_${i}" class="materialize-textarea" required ></textarea>
+              </div>`;
+          i ++;
+        }
+      });
+
+    </script>
+
+    <!-- COMPILED AND MINIFIED JAVASCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
