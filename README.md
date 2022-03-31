@@ -3,8 +3,7 @@
 Google Solution Challenge 2022 Project
 
 ## About
-Hygeia is a two-way platform that connects elderly to their doctors. On the elderly-side, it provides easy-to-use healthcare assistance to its elderly users through many handy features. On the doctor's side, it allows the doctors to manage the elderly's medication, appointments, and status easily.
-  
+Hygeia is a two-way platform that connects elderly to their doctors. On the elderly-side, it provides easy-to-use healthcare assistance to its elderly users through many handy features. On the doctor's side, it allows the doctors to manage the elderly's medication, appointments, and status easily.  
 <image src="/assets/icon/icon.png" width="200"/>
 
 ## Project Motivation
