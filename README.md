@@ -13,7 +13,7 @@ Creating Healthcare technology for the elderly is a challenge. Complicated featu
 
 ## Architecture :classical_building:
 The elderly-side app is built with Flutter. It also integrates Dialogflow for the voice command feature. HTML is used to build the doctor-side webapp. The two platforms are connected via Firebase Firestore.
-
+<image src="/assets/icon/Doctor's%20office.png" width="200"/>
 ## Features :pill:
 The features of the app surrounds on
 
