@@ -3,7 +3,8 @@
 Google Solution Challenge 2022 Project
 
 ## About
-Hygeia is a two-way platform that connects elderly to their doctors. On the elderly-side, it provides easy-to-use healthcare assistance to its elderly users through many handy features. On the doctor's side, it allows the doctors to manage the elderly's medication, appointments, and status easily.  
+Hygeia is a two-way platform that connects elderly to their doctors. On the elderly-side, it provides easy-to-use healthcare assistance to its elderly users through many handy features. On the doctor's side, it allows the doctors to manage the elderly's medication, appointments, and status easily.
+
 <image src="/assets/icon/icon.png" width="200"/>
 
 ## Project Motivation
@@ -17,7 +18,7 @@ The features of the app surrounds on
 
     1. Allow easier communication between doctor and elderly
     2. Healthcare related assistant for the elderly
-### Elderly-Side
+### Elderly-Side :white_haired_man:
     1. Call feature
         - Emergency call
         - Contact doctor
@@ -32,7 +33,7 @@ The features of the app surrounds on
         - Learn about the information about medication (how much to take, etc)
     4. Log in via phone number
     5. Interact with the assistant by voice or tapping
-### Doctor-Side
+### Doctor-Side :health_worker:
     1. Log in as a doctor
     2. Create account for the patients
     3. Set/ read appointments via interface
